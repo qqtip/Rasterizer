@@ -6,15 +6,10 @@ using namespace std;
 const int R_VAL = 2;
 const int G_VAL = 3;
 const int B_VAL = 4;
-/*
-Triangle::Triangle(float x1, float y1, float z1, float r1, float g1, float b1, 
-      float x2, float y2, float z2, float r2, float g2, float b2, 
-      float x3, float y3, float z3, float r3, float g3, float b3) :
-   vertices{ 
-      { x1, y1, r1, g1, b1 }, 
-      { x2, y2, r2, g2, b2 }, 
-      { x3, y3, r3, g3, b3 }
-   },*/
+
+const float EPSILON = 0.001;
+
+/** constructor */
 Triangle::Triangle(float x1, float y1, float z1,
       float x2, float y2, float z2,
       float x3, float y3, float z3) :
@@ -38,14 +33,28 @@ Triangle::Triangle(float x1, float y1, float z1,
    }
    
    // calculate height/width of bounding box
-   height = ymax - ymin;
    width = xmax - xmin;
+   height = ymax - ymin;
 
    // calculate area
    area = ((vertices[1][0] - vertices[0][0]) * 
            (vertices[2][1] - vertices[0][1]) - 
            (vertices[2][0] - vertices[0][0]) * 
            (vertices[1][1] - vertices[0][1])) / 2;
+}
+
+/** Determines whether the triangle contains the given x, y coordinates */
+bool Triangle::contains(float x, float y) {
+
+   //float beta = triangle.calcBetaFor(x, y);
+   float beta = (((vertices[0][0] - vertices[2][0]) * (y - vertices[2][1]) - 
+      (x - vertices[2][0]) * (vertices[0][1] - vertices[2][1])) / 2) / area;
+   //float gamma = triangle.calcGammaFor(x, y);
+   float gamma = (((vertices[1][0] - vertices[0][0]) * (y - vertices[0][1]) - 
+      (x - vertices[0][0]) * (vertices[1][1] - vertices[0][1])) / 2) / area;
+   float alpha = 1 - beta - gamma;
+      
+   return alpha > -EPSILON && beta > -EPSILON && gamma > -EPSILON;
 }
 
 /**

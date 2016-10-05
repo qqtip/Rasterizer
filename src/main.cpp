@@ -64,13 +64,11 @@ int main(int argc, char **argv)
    //*/
 
    //create an image
-   auto image = make_shared<Image>(width, height);
-   // rasterize
-   //Rasterizer rasterizer((Image*)((shared_ptr<Image>)image).get());
-   Rasterizer rasterizer(width, height);
+   Image image(width, height);
+   Rasterizer rasterizer(width, height, &image);
    rasterizer.rasterize(posBuf, triBuf, colormode);
    // write out the image
-   image->writeToFile(imgName);
+   image.writeToFile(imgName);
 
 	return 0;
 }

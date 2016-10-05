@@ -24,6 +24,7 @@ public: /*
    float getYMin() const { return ymin; }
    float getXMax() const { return xmax; }
    float getYMax() const { return ymax; }
+   bool contains(float x, float y);
    float calcBetaFor(float x, float y);
    float calcGammaFor(float x, float y);
    unsigned char calcRedFor(float alpha, float beta, float gamma);
@@ -39,8 +40,8 @@ private:
    float xmax;
    float ymax;
    // height and width of bounding box
-   float height;
    float width;
+   float height;
    // area of the triangle
    float area;
 };

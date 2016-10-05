@@ -5,6 +5,8 @@
 #include "Image.h"
 #include "Triangle.h"
 
+#define VERTEX_MAP( x ) ( ( (x) - 1 ) * 3 )
+
 struct Vertex {
    float x;
    float y;
@@ -14,33 +16,21 @@ struct Vertex {
    float b;
 };
 
-struct Frustum {
-   float left;
-   float right;
-   float top;
-   float bottom;
-};
-
 class Rasterizer
 {
    public:
-      //Rasterizer(Image *img);
-      Rasterizer(int frameWidth, int frameHeight);
+      Rasterizer(int frameWidth, int frameHeight, Image *image);
       bool rasterize(std::vector<float> posBuf, 
                      std::vector<unsigned int> triBuf,
                      unsigned char colormode);
       //Image getImage() const { return Raster; }
 
    private:
-      //*Image pixelBuf;
-      //Image *image;
       float **pixelBuf;
       float **zBuf;
-      Frustum frustum;
       int width;
       int height;
-      //int imgWidth;
-      //int imgHeight;
+      Image *image;
       Triangle *triangles;
 
       void drawTriangle(Triangle triangle);
