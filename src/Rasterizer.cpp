@@ -29,9 +29,6 @@ bool Rasterizer::rasterize(std::vector<float> posBuf,
       // do stuff
    }
 
-   for (unsigned int what : triBuf)
-      cout << what << endl;
-
    for (int i = 0; i < triCount; ++i) {
       // create triangles
       int j = i * 3;
