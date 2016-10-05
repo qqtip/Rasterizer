@@ -38,36 +38,23 @@ int main(int argc, char **argv)
    // material (unused)
 	vector<tinyobj::material_t> objMaterials; 
 	string errStr;
-	
+	// read mesh file
    bool rc = tinyobj::LoadObj(shapes, objMaterials, errStr, meshName.c_str());
-	/* error checking on read */
+	// error checking on read
 	if(!rc) {
 		cerr << errStr << endl;
       exit(2);
 	}
  	// resize object to be within -1 -> 1
    resize_obj(shapes);
+
    posBuf = shapes[0].mesh.positions;
    triBuf = shapes[0].mesh.indices;
 
-   /*
-   //cout << "Number of vertices: " << posBuf.size()/3 << endl;
-   //cout << "Number of triangles: " << triBuf.size()/3 << endl;
-   for (float f : posBuf) {
-      printf("%.2f ", f);
-   }
-   cout << endl;
-   for (int i : triBuf) {
-      printf("%d ", i);
-   }
-   cout << endl;
-   //*/
-
-   //create an image
+   // create image and rasterize the mesh file to it
    Image image(width, height);
    Rasterizer rasterizer(width, height, &image);
    rasterizer.rasterize(posBuf, triBuf, colormode);
-   // write out the image
    image.writeToFile(imgName);
 
 	return 0;

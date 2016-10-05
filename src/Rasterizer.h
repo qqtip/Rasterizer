@@ -17,18 +17,19 @@ class Rasterizer
       //Image getImage() const { return Raster; }
 
    private:
-      float **pixelBuf;
       float **zBuf;
       int width;
       int height;
       Image *image;
       Triangle *triangles;
 
-      float xScale;
-      float yScale;
+      float scale;
       float xSkew;
       float ySkew;
 
+      void readTriangles(std::vector<float> posBuf, 
+                         std::vector<unsigned int> triBuf);
+      void computeBoundingBox(int count);
       void drawTriangle(Triangle triangle);
 };
 

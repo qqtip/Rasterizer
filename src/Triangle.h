@@ -3,10 +3,9 @@
 #define _TRIANGLE_H_
 
 // number of vertices in a triangle
-const int NUM_VERTICES = 3;
-// number of values in a vertex (x, y, z, r, g, b)
-const int NUM_VALUES = 6;
+const int VERTEX_COUNT = 3;
 
+/* a vertex containing a location in 3D space and an RBG color value */
 struct Vertex {
    Vertex(float x, float y, float z) :
       x(x), y(y), z(z)
@@ -23,6 +22,7 @@ struct Vertex {
    float b;
 };
 
+/* a triangle containing three vertices and functions to aid rasterization */
 class Triangle
 {
 public:
@@ -32,6 +32,7 @@ public:
    float getYMin() const { return ymin; }
    float getXMax() const { return xmax; }
    float getYMax() const { return ymax; }
+   void scale(float scale, float xSkew, float ySkew);
    bool contains(float x, float y);
    float calcBetaFor(float x, float y);
    float calcGammaFor(float x, float y);
@@ -41,7 +42,7 @@ public:
 
 private:
    // x, y, r, b, g values of each vertex
-   float vertices[NUM_VERTICES][NUM_VALUES];
+   Vertex vertices[VERTEX_COUNT];
    // min/max coordinate values
    float xmin;
    float ymin;
