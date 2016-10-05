@@ -7,19 +7,10 @@
 
 #define VERTEX_MAP( x ) ( ( (x) - 1 ) * 3 )
 
-struct Vertex {
-   float x;
-   float y;
-   float z;
-   float r;
-   float g;
-   float b;
-};
-
 class Rasterizer
 {
    public:
-      Rasterizer(int frameWidth, int frameHeight, Image *image);
+      Rasterizer(int width, int height, Image * image);
       bool rasterize(std::vector<float> posBuf, 
                      std::vector<unsigned int> triBuf,
                      unsigned char colormode);
@@ -32,6 +23,11 @@ class Rasterizer
       int height;
       Image *image;
       Triangle *triangles;
+
+      float xScale;
+      float yScale;
+      float xSkew;
+      float ySkew;
 
       void drawTriangle(Triangle triangle);
 };

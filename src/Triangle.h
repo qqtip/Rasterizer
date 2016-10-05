@@ -4,21 +4,29 @@
 
 // number of vertices in a triangle
 const int NUM_VERTICES = 3;
-// number of values in a vertex (x, y, r, g, b)
-const int NUM_VALUES = 5;
+// number of values in a vertex (x, y, z, r, g, b)
+const int NUM_VALUES = 6;
+
+struct Vertex {
+   Vertex(float x, float y, float z) :
+      x(x), y(y), z(z)
+   {
+      r = 255;
+      g = 105;
+      b = 180;
+   }
+   float x;
+   float y;
+   float z;
+   float r;
+   float g;
+   float b;
+};
 
 class Triangle
 {
-public: /*
-   Triangle(float x1, float y1, float z1, float r1, float g1, float b1, 
-      float x2, float y2, float z2, float r2, float g2, float b2, 
-      float x3, float y3, float z3, float r3, float g3, float b3);
-      */
-
-   Triangle(float x1, float y1, float z1,
-      float x2, float y2, float z2,
-      float x3, float y3, float z3);
-
+public:
+   Triangle(Vertex v1, Vertex v2, Vertex v3);
 
    float getXMin() const { return xmin; }
    float getYMin() const { return ymin; }
@@ -44,6 +52,8 @@ private:
    float height;
    // area of the triangle
    float area;
+
+   void init();
 };
 
 #endif

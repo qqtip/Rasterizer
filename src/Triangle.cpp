@@ -10,15 +10,12 @@ const int B_VAL = 4;
 const float EPSILON = 0.001;
 
 /** constructor */
-Triangle::Triangle(float x1, float y1, float z1,
-      float x2, float y2, float z2,
-      float x3, float y3, float z3) :
+Triangle::Triangle(Vertex v1, Vertex v2, Vertex v3) :
    vertices{ 
-      { x1, y1, z1 }, 
-      { x2, y2, z2 }, 
-      { x3, y3, z3 }
+      { v1.x, v1.y, v1.z }, 
+      { v2.x, v2.y, v2.z }, 
+      { v3.x, v3.y, v3.z }
    },
-   // temporary min/max initializations
    xmin(vertices[0][0]),
    ymin(vertices[0][1]),
    xmax(vertices[0][0]),
@@ -40,8 +37,7 @@ Triangle::Triangle(float x1, float y1, float z1,
    area = ((vertices[1][0] - vertices[0][0]) * 
            (vertices[2][1] - vertices[0][1]) - 
            (vertices[2][0] - vertices[0][0]) * 
-           (vertices[1][1] - vertices[0][1])) / 2;
-}
+           (vertices[1][1] - vertices[0][1])) / 2;}
 
 /** Determines whether the triangle contains the given x, y coordinates */
 bool Triangle::contains(float x, float y) {
