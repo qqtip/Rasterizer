@@ -5,6 +5,11 @@ CMakeFiles/raster.dir/src/Image.cpp.o: src/Image.cpp
 CMakeFiles/raster.dir/src/Image.cpp.o: src/Image.h
 CMakeFiles/raster.dir/src/Image.cpp.o: src/stb_image_write.h
 
+CMakeFiles/raster.dir/src/Rasterizer.cpp.o: src/Image.h
+CMakeFiles/raster.dir/src/Rasterizer.cpp.o: src/Rasterizer.cpp
+CMakeFiles/raster.dir/src/Rasterizer.cpp.o: src/Rasterizer.h
+CMakeFiles/raster.dir/src/Rasterizer.cpp.o: src/Triangle.h
+
 CMakeFiles/raster.dir/src/Triangle.cpp.o: src/Triangle.cpp
 CMakeFiles/raster.dir/src/Triangle.cpp.o: src/Triangle.h
 

@@ -22,9 +22,17 @@ string
 vector
 -
 
+/Users/kiettran/sandbox/471/P01/src/Rasterizer.cpp
+iostream
+-
+Rasterizer.h
+/Users/kiettran/sandbox/471/P01/src/Rasterizer.h
+
 /Users/kiettran/sandbox/471/P01/src/Rasterizer.h
 Image.h
 /Users/kiettran/sandbox/471/P01/src/Image.h
+Triangle.h
+/Users/kiettran/sandbox/471/P01/src/Triangle.h
 
 /Users/kiettran/sandbox/471/P01/src/Triangle.cpp
 iostream

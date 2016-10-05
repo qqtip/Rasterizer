@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/kiettran/sandbox/471/P01/src/Image.cpp" "/Users/kiettran/sandbox/471/P01/CMakeFiles/raster.dir/src/Image.cpp.o"
+  "/Users/kiettran/sandbox/471/P01/src/Rasterizer.cpp" "/Users/kiettran/sandbox/471/P01/CMakeFiles/raster.dir/src/Rasterizer.cpp.o"
   "/Users/kiettran/sandbox/471/P01/src/Triangle.cpp" "/Users/kiettran/sandbox/471/P01/CMakeFiles/raster.dir/src/Triangle.cpp.o"
   "/Users/kiettran/sandbox/471/P01/src/main.cpp" "/Users/kiettran/sandbox/471/P01/CMakeFiles/raster.dir/src/main.cpp.o"
   )

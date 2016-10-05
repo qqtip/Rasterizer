@@ -44,14 +44,15 @@ int main(int argc, char **argv)
 	if(!rc) {
 		cerr << errStr << endl;
       exit(2);
-	} else {
-		posBuf = shapes[0].mesh.positions;
-		triBuf = shapes[0].mesh.indices;
 	}
+ 	// resize object to be within -1 -> 1
+   resize_obj(shapes);
+   posBuf = shapes[0].mesh.positions;
+   triBuf = shapes[0].mesh.indices;
 
    /*
-	cout << "Number of vertices: " << posBuf.size()/3 << endl;
-	cout << "Number of triangles: " << triBuf.size()/3 << endl;
+   //cout << "Number of vertices: " << posBuf.size()/3 << endl;
+   //cout << "Number of triangles: " << triBuf.size()/3 << endl;
    for (float f : posBuf) {
       printf("%.2f ", f);
    }
@@ -62,14 +63,12 @@ int main(int argc, char **argv)
    cout << endl;
    //*/
 
- 	//keep this code to resize your object to be within -1 -> 1
-   resize_obj(shapes);
-
    //create an image
    auto image = make_shared<Image>(width, height);
    // rasterize
-   Rasterizer rasterizer = Rasterizer(image);
-   rasterizer.rasterize(posBuf, triBuf);
+   //Rasterizer rasterizer((Image*)((shared_ptr<Image>)image).get());
+   Rasterizer rasterizer(width, height);
+   rasterizer.rasterize(posBuf, triBuf, colormode);
    // write out the image
    image->writeToFile(imgName);
 
@@ -106,9 +105,9 @@ void resize_obj(std::vector<tinyobj::shape_t> &shapes) {
 
    //From min and max compute necessary scale and shift for each dimension
    float maxExtent, xExtent, yExtent, zExtent;
-   xExtent = maxX-minX;
-   yExtent = maxY-minY;
-   zExtent = maxZ-minZ;
+   xExtent = maxX - minX;
+   yExtent = maxY - minY;
+   zExtent = maxZ - minZ;
    if (xExtent >= yExtent && xExtent >= zExtent) {
       maxExtent = xExtent;
    }
@@ -118,12 +117,12 @@ void resize_obj(std::vector<tinyobj::shape_t> &shapes) {
    if (zExtent >= xExtent && zExtent >= yExtent) {
       maxExtent = zExtent;
    }
-   scaleX = 2.0 /maxExtent;
-   shiftX = minX + (xExtent/ 2.0);
+   scaleX = 2.0 / maxExtent;
+   shiftX = minX + (xExtent / 2.0);
    scaleY = 2.0 / maxExtent;
    shiftY = minY + (yExtent / 2.0);
-   scaleZ = 2.0/ maxExtent;
-   shiftZ = minZ + (zExtent)/2.0;
+   scaleZ = 2.0 / maxExtent;
+   shiftZ = minZ + (zExtent / 2.0);
 
    //Go through all verticies shift and scale them
    for (size_t i = 0; i < shapes.size(); i++) {

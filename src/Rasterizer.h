@@ -3,6 +3,7 @@
 #define RASTERIZER_H
 
 #include "Image.h"
+#include "Triangle.h"
 
 struct Vertex {
    float x;
@@ -13,21 +14,35 @@ struct Vertex {
    float b;
 };
 
+struct Frustum {
+   float left;
+   float right;
+   float top;
+   float bottom;
+};
+
 class Rasterizer
 {
    public:
-      Rasterizer(Image img);
-      bool rasterize(std::vector<float> *posBuf, 
-                     std::vector<unsigned int> *triBuf);
-      bool rasterize(std::vector<float> *posBuf, 
-                     std::vector<unsigned int> *triBuf, int colormode = 1);
+      //Rasterizer(Image *img);
+      Rasterizer(int frameWidth, int frameHeight);
+      bool rasterize(std::vector<float> posBuf, 
+                     std::vector<unsigned int> triBuf,
+                     unsigned char colormode);
       //Image getImage() const { return Raster; }
 
    private:
-      *std::vector<float> positions;
-      *std::vector<unsigned int> indices;
-      *Image pixelBuf;
-      **float zBuf;
+      //*Image pixelBuf;
+      //Image *image;
+      float **pixelBuf;
+      float **zBuf;
+      Frustum frustum;
+      int width;
+      int height;
+      //int imgWidth;
+      //int imgHeight;
+      Triangle *triangles;
+
       void drawTriangle(Triangle triangle);
 };
 

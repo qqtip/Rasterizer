@@ -150,6 +150,33 @@ src/Image.cpp.s:
 	$(MAKE) -f CMakeFiles/raster.dir/build.make CMakeFiles/raster.dir/src/Image.cpp.s
 .PHONY : src/Image.cpp.s
 
+src/Rasterizer.o: src/Rasterizer.cpp.o
+
+.PHONY : src/Rasterizer.o
+
+# target to build an object file
+src/Rasterizer.cpp.o:
+	$(MAKE) -f CMakeFiles/raster.dir/build.make CMakeFiles/raster.dir/src/Rasterizer.cpp.o
+.PHONY : src/Rasterizer.cpp.o
+
+src/Rasterizer.i: src/Rasterizer.cpp.i
+
+.PHONY : src/Rasterizer.i
+
+# target to preprocess a source file
+src/Rasterizer.cpp.i:
+	$(MAKE) -f CMakeFiles/raster.dir/build.make CMakeFiles/raster.dir/src/Rasterizer.cpp.i
+.PHONY : src/Rasterizer.cpp.i
+
+src/Rasterizer.s: src/Rasterizer.cpp.s
+
+.PHONY : src/Rasterizer.s
+
+# target to generate assembly for a file
+src/Rasterizer.cpp.s:
+	$(MAKE) -f CMakeFiles/raster.dir/build.make CMakeFiles/raster.dir/src/Rasterizer.cpp.s
+.PHONY : src/Rasterizer.cpp.s
+
 src/Triangle.o: src/Triangle.cpp.o
 
 .PHONY : src/Triangle.o
@@ -216,6 +243,9 @@ help:
 	@echo "... src/Image.o"
 	@echo "... src/Image.i"
 	@echo "... src/Image.s"
+	@echo "... src/Rasterizer.o"
+	@echo "... src/Rasterizer.i"
+	@echo "... src/Rasterizer.s"
 	@echo "... src/Triangle.o"
 	@echo "... src/Triangle.i"
 	@echo "... src/Triangle.s"

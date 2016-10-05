@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/raster.dir/src/Image.cpp.o"
   "CMakeFiles/raster.dir/src/main.cpp.o"
+  "CMakeFiles/raster.dir/src/Rasterizer.cpp.o"
   "CMakeFiles/raster.dir/src/Triangle.cpp.o"
   "raster.pdb"
   "raster"
